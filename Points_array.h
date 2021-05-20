@@ -1,7 +1,4 @@
 #pragma once
-#include <Windows.h>
-#include <math.h>
-#include <iostream>
 #include "Interface.h"
 #include "Main.h"
 
@@ -26,6 +23,7 @@ public:
 		arr_size = size;
 		arr_point = new Point[arr_size];
 	}
+
 
 	~Points_class() {
 		delete[] arr_point;

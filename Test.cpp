@@ -8,7 +8,8 @@ int quantity = 0, radius = 0;
 void update_dates(void) {
 	quantity = 0;
 }
-void Test1(void) {
+bool Test1(void) {
+	update_dates();
 	quantity = 5;
 	point_arr.set_size(quantity);
 	res_point_arr.set_size(quantity);
@@ -45,9 +46,7 @@ void Test1(void) {
 			check++;
 	}
 	if (check == res_point_arr.get_size()) {
-		SetConsoleTextAttribute(handle, FOREGROUND_GREEN);
-		cout << "Тест 1 пройден!" << endl;
-		SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+		return true;
 	}
 	else {
 		SetConsoleTextAttribute(handle, FOREGROUND_RED);
@@ -63,11 +62,12 @@ void Test1(void) {
 			else result = " не попадает.";
 			cout << "По прохождению теста точка " << i + 1 << result << endl;
 		}
+		return false;
 	}
-	update_dates();
 }
 
-void Test2(void) {
+bool Test2(void) {
+	update_dates();
 	quantity = 5;
 	point_arr.set_size(quantity);
 	res_point_arr.set_size(quantity);
@@ -104,9 +104,7 @@ void Test2(void) {
 			check++;
 	}
 	if (check == res_point_arr.get_size()) {
-		SetConsoleTextAttribute(handle, FOREGROUND_GREEN);
-		cout << "Тест 2 пройден!" << endl;
-		SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+		return true;
 	}
 	else {
 		SetConsoleTextAttribute(handle, FOREGROUND_RED);
@@ -122,11 +120,12 @@ void Test2(void) {
 			else result = " не попадает.";
 			cout << "По прохождению теста точка " << i + 1 << result << endl;
 		}
+		return false;
 	}
-	update_dates();
 }
 
-void Test3(void) {
+bool Test3(void) {
+	update_dates();
 	quantity = 3;
 	point_arr.set_size(quantity);
 	res_point_arr.set_size(quantity);
@@ -155,9 +154,7 @@ void Test3(void) {
 			check++;
 	}
 	if (check == res_point_arr.get_size()) {
-		SetConsoleTextAttribute(handle, FOREGROUND_GREEN);
-		cout << "Тест 3 пройден!" << endl;
-		SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+		return true;
 	}
 	else {
 		SetConsoleTextAttribute(handle, FOREGROUND_RED);
@@ -173,11 +170,12 @@ void Test3(void) {
 			else result = " не попадает.";
 			cout << "По прохождению теста точка " << i + 1 << result << endl;
 		}
+		return false;
 	}
-	update_dates();
 }
 
-void Test4(void) {
+bool Test4(void) {
+	update_dates();
 	quantity = 3;
 	point_arr.set_size(quantity);
 	res_point_arr.set_size(quantity);
@@ -206,9 +204,7 @@ void Test4(void) {
 			check++;
 	}
 	if (check == res_point_arr.get_size()) {
-		SetConsoleTextAttribute(handle, FOREGROUND_GREEN);
-		cout << "Тест 4 пройден!" << endl;
-		SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+		return true;
 	}
 	else {
 		SetConsoleTextAttribute(handle, FOREGROUND_RED);
@@ -224,13 +220,15 @@ void Test4(void) {
 			else result = " не попадает.";
 			cout << "По прохождению теста точка " << i + 1 << result << endl;
 		}
+		return false;
 	}
-	update_dates();
 }
 
 void run_tests(void) {
-	Test1();
-	Test2();
-	Test3();
-	Test4();
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	if (Test1() && Test2() && Test3() && Test4()) {
+		SetConsoleTextAttribute(handle, FOREGROUND_GREEN);
+		cout << "Все тесты пройдены!" << endl;
+		SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);
+	}
 }
