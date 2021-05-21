@@ -134,7 +134,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface.h" />
-    <ClInclude Include="Main.h" />
     <ClInclude Include="Points_array.h" />
     <ClInclude Include="Test.h" />
   </ItemGroup>

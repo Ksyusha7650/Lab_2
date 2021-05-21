@@ -1,11 +1,4 @@
 #pragma once
-#include "Points_array.h"
-#include "Main.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <limits>
-#include <filesystem>
 #include <Windows.h>
 
 class res_points_class;

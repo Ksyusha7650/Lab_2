@@ -1,6 +1,6 @@
 #pragma once
 #include "Interface.h"
-#include "Main.h"
+
 
 struct Point
 {

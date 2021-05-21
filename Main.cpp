@@ -1,4 +1,11 @@
-#include "Main.h"
+#include <iostream>
+#include <ctime>
+#include <Windows.h>
+#include "Points_array.h"
+#include "Interface.h"
+#include "Test.h"
+
+using namespace std;
 
 int main()
 {
@@ -12,7 +19,7 @@ int main()
 	res_points_class res_point_arr;
 	int size = 0, mode = 0, radius = 0;
 	Point center;
-	srand((unsigned)time(NULL));
+	srand (static_cast<unsigned char>(time(NULL)));
 	do {
 	
 		if (show_or_try()) run_tests();

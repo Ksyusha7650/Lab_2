@@ -1,4 +1,13 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <limits>
+#include <filesystem>
+#include <Windows.h>
 #include "Interface.h"
+#include "Points_array.h"
+
+using namespace std;
 using namespace filesystem;
 
 double get_double() {
@@ -59,7 +68,7 @@ void user_input(int& size, Points_class& arr_point, int& radius, Point& center, 
 	while (true) {
 		radius = get_int();
 		if (radius <= 0) {
-			cout << "Радиус не может быть отрицательным." << endl;
+			cout << "Радиус должен быть больше нуля." << endl;
 		}
 		else break;
 	}
@@ -79,14 +88,14 @@ void generation_input(int& size, Points_class& arr_point, int& radius, Point& ce
 	arr_point.set_size(size);
 	res_point_arr.set_size(size);
 	for (int index = 0; index < arr_point.get_size(); index++) {
-		arr_point[index].x = ((double)(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
-		arr_point[index].y = ((double)(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
-		arr_point[index].z = ((double)(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
+		arr_point[index].x = (static_cast <double> (rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
+		arr_point[index].y = (static_cast <double>(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
+		arr_point[index].z = (static_cast <double>(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
 	}
 	radius = ((rand() % (MAX_RADIUS - MIN_RADIUS)) + MIN_RADIUS);
-	center.x = ((double)(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
-	center.y = ((double)(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
-	center.z = ((double)(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
+	center.x = (static_cast <double>(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
+	center.y = (static_cast <double>(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
+	center.z = (static_cast <double>(rand() % (MAX_POINT - MIN_POINT)) + MIN_POINT);
 }
 
 void output_point(Point point, const int index) {

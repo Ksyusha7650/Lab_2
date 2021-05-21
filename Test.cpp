@@ -1,15 +1,10 @@
 #include "Test.h"
+#include "Points_array.h"
+#include "Interface.h"
+#include <string>
 
-Point center;
-Points_class point_arr;
-res_points_class res_point_arr, expected_res_point_arr;
-int quantity = 0, radius = 0;
-
-void update_dates(void) {
-	quantity = 0;
-}
-bool Test1(void) {
-	update_dates();
+bool Test1(Point& center, Points_class& point_arr, res_points_class& res_point_arr, res_points_class& expected_res_point_arr) {
+	int quantity = 0, radius = 0;
 	quantity = 5;
 	point_arr.set_size(quantity);
 	res_point_arr.set_size(quantity);
@@ -66,9 +61,8 @@ bool Test1(void) {
 	}
 }
 
-bool Test2(void) {
-	update_dates();
-	quantity = 5;
+bool Test2(Point& center, Points_class& point_arr, res_points_class& res_point_arr, res_points_class& expected_res_point_arr) {
+	int quantity = 5, radius = 0;
 	point_arr.set_size(quantity);
 	res_point_arr.set_size(quantity);
 	expected_res_point_arr.set_size(quantity);
@@ -124,9 +118,8 @@ bool Test2(void) {
 	}
 }
 
-bool Test3(void) {
-	update_dates();
-	quantity = 3;
+bool Test3(Point& center, Points_class& point_arr, res_points_class& res_point_arr, res_points_class& expected_res_point_arr) {
+	int quantity = 3, radius = 2;
 	point_arr.set_size(quantity);
 	res_point_arr.set_size(quantity);
 	expected_res_point_arr.set_size(quantity);
@@ -139,7 +132,6 @@ bool Test3(void) {
 	point_arr[2].x = 2;
 	point_arr[2].y = 2;
 	point_arr[2].z = 2;
-	radius = 2;
 	center.x = 1;
 	center.y = 1;
 	center.z = 1;
@@ -174,9 +166,8 @@ bool Test3(void) {
 	}
 }
 
-bool Test4(void) {
-	update_dates();
-	quantity = 3;
+bool Test4(Point& center, Points_class& point_arr, res_points_class& res_point_arr, res_points_class& expected_res_point_arr) {
+	int quantity = 3, radius = 2;
 	point_arr.set_size(quantity);
 	res_point_arr.set_size(quantity);
 	expected_res_point_arr.set_size(quantity);
@@ -189,7 +180,6 @@ bool Test4(void) {
 	point_arr[2].x = 2;
 	point_arr[2].y = 2;
 	point_arr[2].z = 2;
-	radius = 2;
 	center.x = 100;
 	center.y = 100;
 	center.z = 100;
@@ -226,7 +216,13 @@ bool Test4(void) {
 
 void run_tests(void) {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	if (Test1() && Test2() && Test3() && Test4()) {
+	Point center;
+	Points_class point_arr;
+	res_points_class res_point_arr, expected_res_point_arr;
+	if (Test1(center, point_arr, res_point_arr, expected_res_point_arr) && 
+		Test2(center, point_arr, res_point_arr, expected_res_point_arr) && 
+		Test3(center, point_arr, res_point_arr, expected_res_point_arr) && 
+		Test4(center, point_arr, res_point_arr, expected_res_point_arr)) {
 		SetConsoleTextAttribute(handle, FOREGROUND_GREEN);
 		cout << "Все тесты пройдены!" << endl;
 		SetConsoleTextAttribute(handle, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY);

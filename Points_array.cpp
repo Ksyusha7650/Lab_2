@@ -1,3 +1,4 @@
+#include <math.h>
 #include "Points_array.h"
 
 void check(Point point, int radius, Point center, res_points_class& res_arr, const int index) {
